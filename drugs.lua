@@ -29,7 +29,7 @@ local function PrintSolution()
 	print("Total Mass:",total,"g")
 	print("Solutions Used:")
 	for i,v in pairs(drugs) do
-		print(i,'-',drugs2[i]..'g')
+		print(i,'-',drugs2[i]..'g',math.floor(((drugs2[i])/total)*10000+.5)/100,"%")
 	end
 	print''
 	print('Chemical Breakdown: '..(total*1000)..' mg')
@@ -43,7 +43,7 @@ local function PrintSolution()
 	for i,v in pairs(drugs) do
 		for dname, dvalue in pairs(v) do
 			if not (contents[dname] == 0) then
-				contents[dname] = (contents[dname]/(total))
+				contents[dname] = math.floor((contents[dname]/(total))*100+.5)/100 
 				print(dname,contents[dname]..'%')
 			end
 		end
@@ -52,18 +52,18 @@ local function PrintSolution()
 end
 
 AddToSolution("Distillate",{
-d8thc = 75.07,
+d8thc = 93.43,
 
 });
 AddToSolution("BSCBD",{
-  cbd = 79.10,
-  cbn = 0.15,
-  cbg = 4.52,
-  thcv = 0.06,
-  cbdv = 1.74,
+cbd = 79.10,
+cbn = 0.15,
+cbg = 4.52,
+thcv = 0.06,
+cbdv = 1.74,
 });
 
 Add("Distillate",1)
-Add("BSCBD",3)
+Add("BSCBD",2.5)
 
 PrintSolution()
